@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour {
 
+	private String _parentName = "Triple_shot";
+
     [SerializeField]
     private float _speed = 10.0f;
 
@@ -26,7 +28,7 @@ public class Laser : MonoBehaviour {
 	{
         if (transform.position.y > 5.5f)
         {
-            DestroyImmediate(this.gameObject);
+            DestroyImmediate(this.gameObject);			
         }
     }
 }
