@@ -13,8 +13,6 @@ public class Laser : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Time.timeScale = 1;
-
-
     }
 	
 	// Update is called once per frame
@@ -28,7 +26,12 @@ public class Laser : MonoBehaviour {
 	{
         if (transform.position.y > 5.5f)
         {
-            DestroyImmediate(this.gameObject);			
+            if (this.transform.parent != null)
+            {
+                Destroy(this.transform.parent.gameObject);
+            }
+
+            Destroy(this.gameObject);			
         }
     }
 }

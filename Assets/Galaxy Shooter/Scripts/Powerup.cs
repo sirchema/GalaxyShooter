@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using UnityEngine;
 
 public class Powerup : MonoBehaviour {
 
 	[SerializeField]
 	private float _speed = 3.0f;
+
+	[SerializeField]
+	private int _powerupID; // 0 = triple shot, 1 = speed boost, 2 = shields
 	
 	// Update is called once per frame
 	void Update () {
@@ -23,7 +27,19 @@ public class Powerup : MonoBehaviour {
 
             if (player != null)
             {
-				player.TripleShotPowerupOn();
+				//enable triple shot
+				if(_powerupID == 0)
+				{
+                    player.TripleShotPowerupOn();
+                }else if (_powerupID == 1)
+                {
+                    //enable speed boost
+					player.SpeedBoostPowerupOn();
+                }else if (_powerupID == 2)
+				{
+					//enable shields
+					player.EnabledShields();
+                }
             }
 			
             Destroy(this.gameObject);
